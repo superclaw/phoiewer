@@ -9,13 +9,15 @@ import Cookies from "js-cookie";
 
 import reducer from "./reducers";
 import App from "./modules/App";
-import {ACCESS_KEY, SECRET_KEY} from "./constants";
+import {ACCESS_KEY, SECRET_KEY, setRedirectUrl} from "./constants";
 import "./index.css";
+
+const IS_LOCAL = true;
 
 export const unsplash = new Unsplash({
   accessKey: ACCESS_KEY,
   secret: SECRET_KEY,
-  callbackUrl: "http://superclaw.ddns.net:3000/phoiewer/build/redirect",
+  callbackUrl: setRedirectUrl(IS_LOCAL),
   bearerToken: Cookies.get('unsplash_access_token'),
 });
 
