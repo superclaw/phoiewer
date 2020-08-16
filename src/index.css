@@ -1,0 +1,35 @@
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --transition: 300ms;
+  --lightest: #efefef;
+  --lighter: #cdcdcd;
+  --light: #aaa;
+  --medium: #999;
+  --dark: #666;
+  --darker: #333;
+  --darkest: #111;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--lightest);
+}
+
+.wrapper {
+  max-width: 100%;
+  min-width: 280px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  transition: all 1ms;
+}

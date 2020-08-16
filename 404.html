@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirect</title>
+</head>
+<body>
+<script>
+  const l = window.location;
+  const defaultPath = '/phoiewer/build/';
+
+  l.replace(
+      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+      defaultPath + '?redirect_to=' + l.pathname.replace(defaultPath, '/') +
+      l.search.replace(/&/g, '~and~') + l.hash
+  );
+</script>
+</body>
+</html>
