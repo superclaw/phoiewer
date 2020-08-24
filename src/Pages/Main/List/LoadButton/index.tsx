@@ -1,7 +1,8 @@
 import React from "react";
-import "./index.css";
+import { loadData } from "../../actions";
+import { TLoadBtnProps } from "../../types";
 
-const LoadButton = ({isLoading, page, loadData}) => isLoading ? (
+const LoadButton = ({ isLoading, page, dispatch }: TLoadBtnProps) => isLoading ? (
     <div className="loading-icon">
       Загрузка...
     </div>
@@ -9,7 +10,7 @@ const LoadButton = ({isLoading, page, loadData}) => isLoading ? (
     <button
         className="load-next"
         onClick={() => {
-          loadData(page);
+          dispatch(loadData(page));
         }}>
       Загрузить ещё...
     </button>

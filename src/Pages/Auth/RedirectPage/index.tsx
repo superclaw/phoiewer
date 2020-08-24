@@ -1,9 +1,14 @@
 import React from "react";
-import {unsplash, errorHandler} from "../../../index";
-import {toJson} from "unsplash-js/lib/unsplash";
-import {Redirect} from "react-router-dom";
+import { unsplash, errorHandler } from "../../../init/unsplashAPI";
+import { toJson } from "unsplash-js";
+import { Redirect } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logIn } from "../actions";
+import { TAccessToken } from "../types";
 
-const RedirectPage = ({logIn}) => {
+const RedirectPage = () => {
+  const dispatch = useDispatch();
+
   const l = window.location;
   const url = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + l.pathname.replace('/redirect', '/');
   const code = new URLSearchParams(l.search).get('code');
@@ -16,11 +21,11 @@ const RedirectPage = ({logIn}) => {
       l.replace(url);
     }
 
-    return toJson(res).catch(err => {
+    return toJson(res).catch((err: string) => {
       alert(`Ошибка: ${err}`);
       l.replace(url);
-    }).then(json => {
-      if (json.access_token) logIn(json.access_token);
+    }).then((json: TAccessToken) => {
+      if (json.access_token) dispatch(logIn(json.access_token));
       l.replace(url);
     });
   });

@@ -1,4 +1,7 @@
-const initState = {
+import { TPhotoListState } from "./types";
+import { TActionReturns, TReducerFunc } from "../../init/types";
+
+const initState: TPhotoListState = {
   list: [],
   page: 0,
   isLoading: false,
@@ -8,8 +11,8 @@ const initState = {
   },
 };
 
-const updateLikes = (state, {photo}, key) => {
-  const newList = [...state.list];
+const updateLikes: TReducerFunc<TPhotoListState> = (state, { photo }, key) => {
+  const newList = [ ...state.list ];
   newList[key] = photo;
 
   return {
@@ -18,7 +21,7 @@ const updateLikes = (state, {photo}, key) => {
   };
 }
 
-const loadList = (state, data) => {
+const loadList: TReducerFunc<TPhotoListState> = (state, data) => {
   let {list, page} = state;
   page++;
 
@@ -37,7 +40,7 @@ const loadList = (state, data) => {
   };
 };
 
-const setErrorMessage = (state, message) => ({
+const setErrorMessage: TReducerFunc<TPhotoListState> = (state, message) => ({
   ...state,
   isLoading: false,
   requestFailed: {
@@ -47,7 +50,7 @@ const setErrorMessage = (state, message) => ({
   },
 });
 
-const toggleIsLoading = state => {
+const toggleIsLoading: TReducerFunc<TPhotoListState> = (state) => {
   return {
     ...state,
     isLoading: true,
@@ -58,7 +61,7 @@ const toggleIsLoading = state => {
   };
 };
 
-const photoList = (state = initState, action) => {
+const reducer = (state = initState, action: TActionReturns): TPhotoListState => {
   switch (action.type) {
     case 'LIKE_PHOTO': return updateLikes(state, action.data, action.key);
     case 'LOAD_NEXT': return loadList(state, action.data);
@@ -68,4 +71,4 @@ const photoList = (state = initState, action) => {
   }
 };
 
-export default photoList;
+export default reducer;
