@@ -1,9 +1,8 @@
 import { Dispatch as TDispatch } from "redux";
 
-export type TData = {
+export type TData = Response & {
     failed?: boolean;
     message?: string;
-    [n: string]: any;
 };
 
 export type TState<T> = {
