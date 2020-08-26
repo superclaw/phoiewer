@@ -1,9 +1,12 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { TDetailsParams } from "./types";
+
+type ParamsType = {
+  id: string;
+};
 
 const Details = () => {
-  const { id } = useParams<TDetailsParams>();
+  const { id } = useParams<ParamsType>();
   return <div>{id}</div>
 };
 

@@ -1,8 +1,14 @@
 import React from "react";
 import { loadData } from "../../actions";
-import { TLoadBtnProps } from "../../types";
+import { Dispatch } from "redux";
 
-const LoadButton = ({ isLoading, page, dispatch }: TLoadBtnProps) => isLoading ? (
+type PropsType = {
+  isLoading: boolean;
+  page: number;
+  dispatch: Dispatch<any>;
+};
+
+const LoadButton = ({ isLoading, page, dispatch }: PropsType) => isLoading ? (
     <div className="loading-icon">
       Загрузка...
     </div>

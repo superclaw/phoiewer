@@ -22,22 +22,3 @@ export type TActionReturns = {
 export type TAction = (...params: any[]) => TActionReturns;
 
 export type TAsyncAction = (...params: any[]) => (dispatch: TDispatch<any>) => Promise<void>;
-
-export type TProps = {
-  [n: string]: string | undefined;
-};
-
-export type TPhoto = {
-  [n: string]: string | TPhoto | any;
-};
-
-export type TUser = {
-  [n: string]: string | TUser;
-};
-
-export type TPhotosCollection = TPhoto[];
-
-export type TLikeResponse = {
-  photo: TPhoto;
-  user: TUser;
-};

@@ -1,6 +1,9 @@
 import Cookies from "js-cookie";
-import { TAuthState } from "./types";
 import { TActionReturns, TReducerFunc } from "../../init/types";
+
+export type TAuthState = {
+  readonly isLoggedIn: boolean;
+};
 
 const initState: TAuthState = {
   isLoggedIn: !!Cookies.get('unsplash_access_token'),

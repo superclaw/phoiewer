@@ -2,14 +2,23 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { loadData, likePhotoList } from "../actions";
 import { Dispatch } from "redux";
-import { TPhotoListProps } from "../types";
-
 import LikeButton from "../../../modules/LikeButton";
+import { TPhotosCollection } from "../../../init/unsplashAPI";
 
-class List extends React.Component<TPhotoListProps> {
+type PropsType = {
+  dispatch: Dispatch<any>;
+  list: TPhotosCollection;
+  page: number;
+  requestFailed: {
+    status: boolean;
+    errorMessage: string;
+  };
+};
+
+class List extends React.Component<PropsType> {
   private readonly dispatch: Dispatch<any>;
 
-  constructor(props: TPhotoListProps) {
+  constructor(props: PropsType) {
     super(props);
     this.dispatch = props.dispatch.bind(this);
   }

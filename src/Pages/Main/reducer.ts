@@ -1,5 +1,15 @@
-import { TPhotoListState } from "./types";
 import { TActionReturns, TReducerFunc } from "../../init/types";
+import { TPhotosCollection } from "../../init/unsplashAPI";
+
+export type TPhotoListState = {
+  list: TPhotosCollection;
+  page: number;
+  isLoading: boolean;
+  requestFailed: {
+    status: boolean;
+    errorMessage: string;
+  };
+};
 
 const initState: TPhotoListState = {
   list: [],

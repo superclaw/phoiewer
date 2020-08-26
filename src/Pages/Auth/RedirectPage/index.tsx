@@ -4,7 +4,14 @@ import { toJson } from "unsplash-js";
 import { Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logIn } from "../actions";
-import { TAccessToken } from "../types";
+
+type TAccessToken = {
+  access_token: string;
+  created_at: number;
+  refresh_token: string;
+  scope: string;
+  token_type: string;
+};
 
 const RedirectPage = () => {
   const dispatch = useDispatch();

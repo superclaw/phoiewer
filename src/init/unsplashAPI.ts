@@ -2,7 +2,69 @@ import Unsplash, { UnsplashApi } from "unsplash-js";
 import { toJson } from "unsplash-js";
 import Cookies from "js-cookie";
 import { ACCESS_KEY, SECRET_KEY, setRedirectUrl } from "./constants";
-import { TLikeResponse, TPhotosCollection } from "./types";
+
+export type TUser = {
+  accepted_tos: boolean;
+  bio: string | null;
+  first_name: string | null;
+  id: string;
+  instagram_username: string | null;
+  last_name: string | null;
+  links: {
+    [n: string]: string;
+  };
+  location: string | null;
+  name: string | null;
+  portfolio_url: string | null;
+  profile_image: {
+    large: string;
+    medium: string;
+    small: string;
+  } | null;
+  total_collection: number;
+  total_likes: number;
+  total_photos: number;
+  twitter_username: string | null;
+  updated_at: string;
+  username: string;
+};
+
+export type TPhoto = {
+  alt_description: any;
+  categories: any[];
+  color: string | null;
+  created_at: string | null;
+  current_user_collection: any[];
+  description: string | null;
+  height: number;
+  id: string;
+  liked_by_user: boolean;
+  likes: number;
+  links: {
+    [n: string]: string;
+  };
+  promoted_at: any;
+  sponsorship: {
+    [n: string]: any;
+  };
+  updated_at: string;
+  urls: {
+    full: string;
+    raw: string;
+    regular: string;
+    small: string;
+    thumb: string;
+  };
+  user: TUser;
+  width: number;
+};
+
+export type TPhotosCollection = TPhoto[];
+
+export type TLikeResponse = {
+  photo: TPhoto;
+  user: TUser;
+};
 
 const IS_LOCAL: boolean = window.location.hostname !== 'superclaw.github.io';
 

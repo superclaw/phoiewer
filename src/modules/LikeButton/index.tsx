@@ -1,8 +1,15 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { TLikeBtnProps} from "./types";
+import { TAsyncAction } from "../../init/types";
+import { TPhoto } from "../../init/unsplashAPI";
 
-const LikeButton = ({ i = 0, el, action }: TLikeBtnProps) => {
+type PropsType = {
+  i: number;
+  el: TPhoto;
+  action: TAsyncAction;
+};
+
+const LikeButton = ({ i = 0, el, action }: PropsType) => {
   const dispatch = useDispatch();
   const { id, likes, liked_by_user } = el;
 

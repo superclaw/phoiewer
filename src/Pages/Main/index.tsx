@@ -3,11 +3,10 @@ import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useIsLoggedIn } from "../../init/hooks";
 import { logOut } from "../Auth/actions";
-
+import { TState } from "../../init/types";
+import { TPhotoListState } from "./reducer";
 import List from "./List";
 import LoadButton from "./List/LoadButton";
-import { TPhotoListState } from "./types";
-import { TState } from "../../init/types";
 
 const Main = () => {
   const l = window.location;
