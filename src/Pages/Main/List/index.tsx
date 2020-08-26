@@ -1,15 +1,15 @@
 import React from "react";
-import { loadData, likePhotoList } from "../actions";
-import { Dispatch as IDispatch } from "redux";
-import { TPhotosCollection } from "../../../init/unsplashAPI";
+import { likePhotoList } from "../actions";
+import { TAsyncAction } from "../../../init/types";
+import { TPhotosList } from "../../../init/unsplashAPI";
 import PhotoPreview from "../../../modules/PhotoPreview";
 import UserInfo from "../../../modules/UserInfo";
 import LikeButton from "../../../modules/LikeButton";
 import DateString from "../../../modules/DateString";
 
 type PropsType = {
-  dispatch: IDispatch<any>;
-  list: TPhotosCollection;
+  action: TAsyncAction;
+  list: TPhotosList;
   page: number;
   requestFailed: {
     status: boolean;
@@ -18,15 +18,15 @@ type PropsType = {
 };
 
 class List extends React.Component<PropsType> {
-  private readonly dispatch: IDispatch<any>;
+  private readonly action: TAsyncAction;
 
   public constructor(props: PropsType) {
     super(props);
-    this.dispatch = props.dispatch.bind(this);
+    this.action = props.action.bind(this);
   }
 
   public componentDidMount() {
-    if (!this.props.page) this.dispatch(loadData(0));
+    if (!this.props.page) this.action(0);
   }
 
   public render() {
@@ -52,7 +52,7 @@ class List extends React.Component<PropsType> {
             )
           }
         </ul>
-    )
+    );
   }
 }
 

@@ -1,9 +1,11 @@
 import { combineReducers } from "redux";
 
-import reducer from "../Pages/Main/reducer";
 import login from "../Pages/Auth/reducer";
+import photoList from "../Pages/Main/reducer";
+import details from "../Pages/Details/reducer";
 
 export default combineReducers({
   login,
-  photoList: reducer,
+  photoList,
+  details,
 });

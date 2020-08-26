@@ -3,18 +3,13 @@ import { useDispatch } from "react-redux";
 import { loadData } from "../actions";
 
 type PropsType = {
-  isLoading: boolean;
   page: number;
 };
 
-const LoadButton = ({ isLoading, page }: PropsType) => {
+const LoadButton = ({ page }: PropsType) => {
   const dispatch = useDispatch();
 
-  return isLoading ? (
-    <div className="loading-icon">
-      Загрузка...
-    </div>
-  ) : (
+  return (
     <button
       className="load-next"
       onClick={() => {

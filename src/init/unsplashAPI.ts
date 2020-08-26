@@ -59,7 +59,7 @@ export type TPhoto = {
   width: number;
 };
 
-export type TPhotosCollection = TPhoto[];
+export type TPhotosList = TPhoto[];
 
 export type TLikeResponse = {
   photo: TPhoto;
@@ -93,7 +93,7 @@ export const errorHandler = (code: number): string => {
     case 403:
       return 'Превышен лимит запросов на сервер';
     case 404:
-      return 'Данные не получены';
+      return 'Не удалось получить данные по запросу';
     default:
       return `Неизвестная ошибка, код: ${code}`;
   }
@@ -112,7 +112,7 @@ export const listPhotos: UnsplashApi.Photo['listPhotos'] =
       return toJson(res).catch((err: string) => ({
         failed: true,
         message: err,
-      })).then((json: TPhotosCollection) => json);
+      })).then((json: TPhotosList) => json);
     });
 
 const likePhoto: UnsplashApi.Photo['likePhoto'] = (id) => unsplash.photos.likePhoto(id);
@@ -133,3 +133,17 @@ export const updateLikes = (id: string, isLiked: boolean) => {
     })).then((json: TLikeResponse) => json);
   });
 };
+
+export const getPhoto: UnsplashApi.Photo['getPhoto'] = (id) =>
+  unsplash.photos.getPhoto(id).then(res => {
+
+    if (!res.ok) return {
+      failed: true,
+      message: errorHandler(res.status),
+    }
+
+    return toJson(res).catch((err: string) => ({
+      failed: true,
+      message: err,
+    })).then((json: any) => json);
+  });

@@ -1,8 +1,8 @@
 import { TActionReturns, TReducerFunc } from "../../init/types";
-import { TPhotosCollection } from "../../init/unsplashAPI";
+import { TPhotosList } from "../../init/unsplashAPI";
 
 export type TPhotoListState = {
-  list: TPhotosCollection;
+  list: TPhotosList;
   page: number;
   isLoading: boolean;
   requestFailed: {

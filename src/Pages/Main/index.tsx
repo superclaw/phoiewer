@@ -2,8 +2,9 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useIsLoggedIn } from "../../init/hooks";
+import { loadData } from "./actions";
 import { logOut } from "../Auth/actions";
-import { TState } from "../../init/types";
+import { TState} from "../../init/types";
 import { TPhotoListState } from "./reducer";
 import List from "./List";
 import LoadButton from "./LoadButton";
@@ -16,6 +17,7 @@ const Main = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useIsLoggedIn();
   const photoList = useSelector(({ photoList }: TState<TPhotoListState>) => photoList);
+
   const { page, isLoading, requestFailed, list } = photoList;
 
   return query ? <Redirect to={query.replace(/~and~/g, '&') + hash} /> : !isLoggedIn ? <Redirect to="/auth" /> : (
@@ -27,10 +29,14 @@ const Main = () => {
             list={list}
             requestFailed={requestFailed}
             page={page}
-            dispatch={dispatch} />
-        <LoadButton
-            isLoading={isLoading}
-            page={page} />
+            action={(i) => dispatch(loadData(i))} />
+        {
+          isLoading ? (
+              <div className="loading-icon">
+                Загрузка...
+              </div>
+            ) : <LoadButton page={page} />
+        }
       </div>
   );
 };
