@@ -5,6 +5,7 @@ import { TPhotosCollection } from "../../../init/unsplashAPI";
 import PhotoPreview from "../../../modules/PhotoPreview";
 import UserInfo from "../../../modules/UserInfo";
 import LikeButton from "../../../modules/LikeButton";
+import DateString from "../../../modules/DateString";
 
 type PropsType = {
   dispatch: IDispatch<any>;
@@ -43,6 +44,9 @@ class List extends React.Component<PropsType> {
                           action={likePhotoList} />
                       </div>
                       <PhotoPreview el={el} />
+                      <div>
+                        Дата публикации: <DateString date={el.created_at} />
+                      </div>
                     </li>
                 )
             )

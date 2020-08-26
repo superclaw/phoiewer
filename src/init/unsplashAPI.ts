@@ -33,7 +33,7 @@ export type TPhoto = {
   alt_description: any;
   categories: any[];
   color: string | null;
-  created_at: string | null;
+  created_at: string;
   current_user_collection: any[];
   description: string | null;
   height: number;
@@ -43,7 +43,7 @@ export type TPhoto = {
   links: {
     [n: string]: string;
   };
-  promoted_at: any;
+  promoted_at: string | null;
   sponsorship: {
     [n: string]: any;
   };

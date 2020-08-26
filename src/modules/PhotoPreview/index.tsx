@@ -8,7 +8,7 @@ type PropsType = {
 
 const PhotoPreview = ({ el }: PropsType) => (
   <Link to={`/photo-${el.id}`}>
-    <img className="img" src={el.urls.thumb} alt={el.alt_description} />
+    <img className="img" src={el.urls.small} alt={el.alt_description} />
   </Link>
 );
 

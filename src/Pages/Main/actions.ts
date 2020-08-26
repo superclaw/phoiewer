@@ -10,6 +10,8 @@ export const loadData: TAsyncAction = (i: number) =>
 
     const data: TData = await listPhotos(++i, 15, "latest");
 
+    console.log(data);
+
     if (data.failed) {
       dispatch({
         type: 'REQUEST_FAILED',
