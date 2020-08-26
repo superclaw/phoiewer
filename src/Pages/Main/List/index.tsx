@@ -1,12 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { loadData, likePhotoList } from "../actions";
-import { Dispatch } from "redux";
-import LikeButton from "../../../modules/LikeButton";
+import { Dispatch as IDispatch } from "redux";
 import { TPhotosCollection } from "../../../init/unsplashAPI";
+import PhotoPreview from "../../../modules/PhotoPreview";
+import UserInfo from "../../../modules/UserInfo";
+import LikeButton from "../../../modules/LikeButton";
 
 type PropsType = {
-  dispatch: Dispatch<any>;
+  dispatch: IDispatch<any>;
   list: TPhotosCollection;
   page: number;
   requestFailed: {
@@ -16,9 +17,9 @@ type PropsType = {
 };
 
 class List extends React.Component<PropsType> {
-  private readonly dispatch: Dispatch<any>;
+  private readonly dispatch: IDispatch<any>;
 
-  constructor(props: PropsType) {
+  public constructor(props: PropsType) {
     super(props);
     this.dispatch = props.dispatch.bind(this);
   }
@@ -33,14 +34,15 @@ class List extends React.Component<PropsType> {
           {
             this.props.list.map((el, i) =>
                 (
-                    <li key={i} className="item">
-                      <Link to={`/photo-${el.id}`}>
-                        <img className="img" src={el.urls.thumb} alt={el.alt_description}/>
-                      </Link>
-                      <LikeButton
-                        i={i}
-                        el={el}
-                        action={likePhotoList} />
+                    <li key={i}>
+                      <div>
+                        <UserInfo user={el.user} />
+                        <LikeButton
+                          i={i}
+                          el={el}
+                          action={likePhotoList} />
+                      </div>
+                      <PhotoPreview el={el} />
                     </li>
                 )
             )

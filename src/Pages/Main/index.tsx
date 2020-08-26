@@ -6,7 +6,7 @@ import { logOut } from "../Auth/actions";
 import { TState } from "../../init/types";
 import { TPhotoListState } from "./reducer";
 import List from "./List";
-import LoadButton from "./List/LoadButton";
+import LoadButton from "./LoadButton";
 
 const Main = () => {
   const l = window.location;
@@ -30,8 +30,7 @@ const Main = () => {
             dispatch={dispatch} />
         <LoadButton
             isLoading={isLoading}
-            page={page}
-            dispatch={dispatch} />
+            page={page} />
       </div>
   );
 };

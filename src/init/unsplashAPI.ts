@@ -6,7 +6,7 @@ import { ACCESS_KEY, SECRET_KEY, setRedirectUrl } from "./constants";
 export type TUser = {
   accepted_tos: boolean;
   bio: string | null;
-  first_name: string | null;
+  first_name: string;
   id: string;
   instagram_username: string | null;
   last_name: string | null;
@@ -14,13 +14,13 @@ export type TUser = {
     [n: string]: string;
   };
   location: string | null;
-  name: string | null;
+  name: string;
   portfolio_url: string | null;
   profile_image: {
     large: string;
     medium: string;
     small: string;
-  } | null;
+  };
   total_collection: number;
   total_likes: number;
   total_photos: number;
