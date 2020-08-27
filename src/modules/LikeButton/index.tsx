@@ -18,7 +18,7 @@ const LikeButton = ({ i = 0, el, action }: PropsType) => {
         <button onClick={() => dispatch(action(id, liked_by_user, i))}/>
         <span>{likes}</span>
       </div>
-  )
+  );
 };
 
 export default LikeButton;

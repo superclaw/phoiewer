@@ -1,4 +1,4 @@
-import { Dispatch as TDispatch } from "redux";
+import { Dispatch as IDispatch } from "redux";
 
 export type TData = Response & {
     failed?: boolean;
@@ -20,4 +20,4 @@ export type TActionReturns = {
 
 export type TAction = (...params: any[]) => TActionReturns;
 
-export type TAsyncAction = (...params: any[]) => (dispatch: TDispatch<any>) => Promise<void>;
+export type TAsyncAction = (...params: any[]) => (dispatch: IDispatch<any>) => Promise<void>;

@@ -5,7 +5,7 @@ export const clearPhoto: TAction = () => ({
   type: 'CLEAR_DATA',
 });
 
-export const loadPhoto: TAsyncAction = (id) =>
+export const loadPhoto: TAsyncAction = (id: string) =>
   async function (dispatch) {
 
     const data: TData = await getPhoto(id);

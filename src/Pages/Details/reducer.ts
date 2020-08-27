@@ -16,7 +16,7 @@ const initState: TDetailsState = {
   },
 };
 
-const clearData: TReducerFunc<TDetailsState> = (state) => ({
+const clearData: TReducerFunc<TDetailsState> = state => ({
   ...state,
   photo: undefined,
   requestFailed: {

@@ -60,7 +60,7 @@ const setErrorMessage: TReducerFunc<TPhotoListState> = (state, message) => ({
   },
 });
 
-const toggleIsLoading: TReducerFunc<TPhotoListState> = (state) => {
+const toggleIsLoading: TReducerFunc<TPhotoListState> = state => {
   return {
     ...state,
     isLoading: true,

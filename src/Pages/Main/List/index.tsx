@@ -45,7 +45,7 @@ class List extends React.Component<PropsType> {
                       </div>
                       <PhotoPreview el={el} />
                       <div>
-                        Дата публикации: <DateString date={el.created_at} />
+                        <DateString date={el.created_at} short={true} />
                       </div>
                     </li>
                 )
