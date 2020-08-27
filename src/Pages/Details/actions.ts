@@ -1,4 +1,4 @@
-import { getPhoto } from "../../init/unsplashAPI";
+import { getPhoto, updateLikes } from "../../init/unsplashAPI";
 import { TAction, TAsyncAction, TData } from "../../init/types";
 
 export const clearPhoto: TAction = () => ({
@@ -19,6 +19,25 @@ export const loadPhoto: TAsyncAction = (id: string) =>
     } else {
       dispatch({
         type: 'LOAD_PHOTO',
+        data: data,
+      });
+    }
+  };
+
+export const likeDetails: TAsyncAction = (id: string, isLiked: boolean) =>
+  async function (dispatch) {
+
+    const data: TData = await updateLikes(id, isLiked);
+
+    if (data.failed) {
+      dispatch({
+        type: 'REQUEST_FAILED',
+        message: data.message,
+      });
+
+    } else {
+      dispatch({
+        type: 'LIKE_PHOTO',
         data: data,
       });
     }

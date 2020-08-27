@@ -23,7 +23,8 @@ const initState: TPhotoListState = {
 
 const updateLikes: TReducerFunc<TPhotoListState> = (state, { photo }, key) => {
   const newList = [ ...state.list ];
-  newList[key] = photo;
+  newList[key].likes = photo.likes;
+  newList[key].liked_by_user = photo.liked_by_user;
 
   return {
     ...state,

@@ -4,7 +4,7 @@ import { TAsyncAction } from "../../init/types";
 import { TPhoto } from "../../init/unsplashAPI";
 
 type PropsType = {
-  i: number;
+  i?: number;
   el: TPhoto;
   action: TAsyncAction;
 };

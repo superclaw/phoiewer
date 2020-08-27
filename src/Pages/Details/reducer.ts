@@ -30,6 +30,19 @@ const updatePhoto: TReducerFunc<TDetailsState> = (state, data) => ({
   photo: data,
 });
 
+const updateLikes: TReducerFunc<TDetailsState> = (state, { photo }) => {
+  const newState: TDetailsState = {
+    ...state,
+  };
+
+  if (newState.photo) {
+    newState.photo.likes = photo.likes;
+    newState.photo.liked_by_user = photo.liked_by_user;
+  }
+
+  return newState;
+};
+
 const setErrorMessage: TReducerFunc<TDetailsState> = (state, message) => ({
   ...state,
   requestFailed: {
@@ -43,6 +56,7 @@ const reducer = (state = initState, action: TActionReturns): TDetailsState => {
   switch (action.type) {
     case 'CLEAR_DATA': return clearData(state);
     case 'LOAD_PHOTO': return updatePhoto(state, action.data);
+    case 'LIKE_PHOTO': return updateLikes(state, action.data);
     case 'REQUEST_FAILED': return setErrorMessage(state, action.message);
     default: return state;
   }

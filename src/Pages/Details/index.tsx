@@ -1,10 +1,13 @@
 import React from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { clearPhoto, loadPhoto } from "./actions";
+import { clearPhoto, loadPhoto, likeDetails } from "./actions";
 import { TState } from "../../init/types";
 import { TDetailsState } from "./reducer";
 import PhotoFull from "../../modules/PhotoFull";
+import UserInfo from "../../modules/UserInfo";
+import DateString from "../../modules/DateString";
+import LikeButton from "../../modules/LikeButton";
 
 type ParamsType = {
   id: string;
@@ -33,6 +36,17 @@ const Details = () => {
             Ошибка загрузки фотографии: {requestFailed.errorMessage}
           </div>
         ) : <PhotoFull photo={photo} />
+      }
+      {
+        photo && (
+          <div>
+            <UserInfo user={photo.user} />
+            <span>
+              Дата публикации: <DateString date={photo.created_at} short={false} />
+            </span>
+            <LikeButton el={photo} action={likeDetails} />
+          </div>
+        )
       }
     </div>
   );
