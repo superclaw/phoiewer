@@ -2,12 +2,12 @@ import React from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearPhoto, loadPhoto, likeDetails } from "./actions";
-import { TState } from "../../init/types";
+import { TState } from "init/types";
 import { TDetailsState } from "./reducer";
-import PhotoFull from "../../modules/PhotoFull";
-import UserInfo from "../../modules/UserInfo";
-import DateString from "../../modules/DateString";
-import LikeButton from "../../modules/LikeButton";
+import PhotoFull from "modules/PhotoFull";
+import UserInfo from "modules/UserInfo";
+import DateString from "modules/DateString";
+import Button from "modules/Button";
 
 type ParamsType = {
   id: string;
@@ -29,7 +29,7 @@ const Details = () => {
 
   return (
     <div>
-      <button onClick={history.goBack}>Назад</button>
+      <Button text="Назад" onClick={history.goBack} />
       {
         requestFailed.status ? (
           <div>
@@ -44,7 +44,8 @@ const Details = () => {
             <span>
               Дата публикации: <DateString date={photo.created_at} short={false} />
             </span>
-            <LikeButton el={photo} action={likeDetails} />
+            <Button type="like" text="click" onClick={() => dispatch(likeDetails(photo.id, photo.liked_by_user))} />
+            <span>{photo.likes}</span>
           </div>
         )
       }

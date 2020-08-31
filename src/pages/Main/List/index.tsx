@@ -1,16 +1,15 @@
 import React from "react";
-import { likePhotoList } from "../actions";
-import { TAsyncAction } from "../../../init/types";
-import { TPhotosList } from "../../../init/unsplashAPI";
-import PhotoPreview from "../../../modules/PhotoPreview";
-import UserInfo from "../../../modules/UserInfo";
-import LikeButton from "../../../modules/LikeButton";
-import DateString from "../../../modules/DateString";
+import { likePhotoList, loadData } from "../actions";
+import { TPhotosList } from "init/unsplashAPI";
+import { Dispatch } from "redux";
+import PhotoPreview from "modules/PhotoPreview";
+import UserInfo from "modules/UserInfo";
+import DateString from "modules/DateString";
+import Button from "modules/Button";
 
 type PropsType = {
-  action: TAsyncAction;
+  dispatch: Dispatch<any>;
   list: TPhotosList;
-  page: number;
   requestFailed: {
     status: boolean;
     errorMessage: string;
@@ -18,15 +17,15 @@ type PropsType = {
 };
 
 class List extends React.Component<PropsType> {
-  private readonly action: TAsyncAction;
+  private readonly dispatch: Dispatch<any>;
 
   public constructor(props: PropsType) {
     super(props);
-    this.action = props.action.bind(this);
+    this.dispatch = props.dispatch.bind(this);
   }
 
   public componentDidMount() {
-    if (!this.props.page) this.action(0);
+    if (this.props.list.length < 1) this.dispatch(loadData(0));
   }
 
   public render() {
@@ -38,10 +37,7 @@ class List extends React.Component<PropsType> {
                     <li key={i}>
                       <div>
                         <UserInfo user={el.user} />
-                        <LikeButton
-                          i={i}
-                          el={el}
-                          action={likePhotoList} />
+                        <Button type="like" onClick={() => this.dispatch(likePhotoList(el.id, el.liked_by_user, i))} />
                       </div>
                       <PhotoPreview el={el} />
                       <div>

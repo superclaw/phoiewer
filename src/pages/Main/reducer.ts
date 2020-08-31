@@ -1,5 +1,5 @@
-import { TActionReturns, TReducerFunc } from "../../init/types";
-import { TPhotosList } from "../../init/unsplashAPI";
+import { TReducer, TReducerFunc } from "init/types";
+import { TPhotosList } from "init/unsplashAPI";
 
 export type TPhotoListState = {
   list: TPhotosList;
@@ -72,9 +72,9 @@ const toggleIsLoading: TReducerFunc<TPhotoListState> = state => {
   };
 };
 
-const reducer = (state = initState, action: TActionReturns): TPhotoListState => {
+const reducer: TReducer<TPhotoListState> = (state = initState, action) => {
   switch (action.type) {
-    case 'LIKE_PHOTO': return updateLikes(state, action.data, action.key);
+    case 'LIKE_PHOTO_LIST': return updateLikes(state, action.data, action.key);
     case 'LOAD_NEXT': return loadList(state, action.data);
     case 'IS_LOADING': return toggleIsLoading(state);
     case 'REQUEST_FAILED': return setErrorMessage(state, action.message);

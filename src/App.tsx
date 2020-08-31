@@ -1,11 +1,11 @@
-import "./index.scss";
+import "styles/global.scss";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Main from "./Pages/Main";
-import Details from "./Pages/Details";
-import Auth from "./Pages/Auth";
-import RedirectPage from "./Pages/Auth/RedirectPage";
+import Main from "pages/Main";
+import Details from "pages/Details";
+import Auth from "pages/Auth";
+import RedirectPage from "pages/Auth/RedirectPage";
 
 const App = () => (
     <Router basename="/phoiewer/build/">

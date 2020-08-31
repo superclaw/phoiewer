@@ -1,14 +1,14 @@
-import { listPhotos, updateLikes } from "../../init/unsplashAPI";
-import { TAsyncAction, TData } from "../../init/types";
+import { getPhoto, updateLikes } from "init/unsplashAPI";
+import { TAction, TAsyncAction, TData } from "init/types";
 
-export const loadData: TAsyncAction = (i: number) =>
+export const clearPhoto: TAction = () => ({
+  type: 'CLEAR_DATA',
+});
+
+export const loadPhoto: TAsyncAction = (id: string) =>
   async function (dispatch) {
 
-    dispatch({
-      type: 'IS_LOADING',
-    });
-
-    const data: TData = await listPhotos(++i, 15, "latest");
+    const data: TData = await getPhoto(id);
 
     if (data.failed) {
       dispatch({
@@ -18,13 +18,13 @@ export const loadData: TAsyncAction = (i: number) =>
 
     } else {
       dispatch({
-        type: 'LOAD_NEXT',
+        type: 'LOAD_PHOTO',
         data: data,
       });
     }
   };
 
-export const likePhotoList: TAsyncAction = (id: string, isLiked: boolean, key: number) =>
+export const likeDetails: TAsyncAction = (id: string, isLiked: boolean) =>
   async function (dispatch) {
 
     const data: TData = await updateLikes(id, isLiked);
@@ -39,7 +39,6 @@ export const likePhotoList: TAsyncAction = (id: string, isLiked: boolean, key: n
       dispatch({
         type: 'LIKE_PHOTO',
         data: data,
-        key: key,
       });
     }
   };

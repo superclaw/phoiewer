@@ -1,5 +1,5 @@
 import React from "react";
-import { unsplash, errorHandler } from "../../../init/unsplashAPI";
+import { unsplash, errorHandler } from "init/unsplashAPI";
 import { toJson } from "unsplash-js";
 import { Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";

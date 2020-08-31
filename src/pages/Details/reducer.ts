@@ -1,5 +1,5 @@
-import { TActionReturns, TReducerFunc } from "../../init/types";
-import { TPhoto } from "../../init/unsplashAPI";
+import { TReducer, TReducerFunc } from "init/types";
+import { TPhoto } from "init/unsplashAPI";
 
 export type TDetailsState = {
   photo?: TPhoto;
@@ -52,7 +52,7 @@ const setErrorMessage: TReducerFunc<TDetailsState> = (state, message) => ({
   },
 });
 
-const reducer = (state = initState, action: TActionReturns): TDetailsState => {
+const reducer: TReducer<TDetailsState> = (state = initState, action) => {
   switch (action.type) {
     case 'CLEAR_DATA': return clearData(state);
     case 'LOAD_PHOTO': return updatePhoto(state, action.data);

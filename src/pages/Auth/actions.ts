@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import { TAction } from "../../init/types";
+import { TAction } from "init/types";
 
 export const logIn: TAction = (accessToken: string) => {
   Cookies.set('unsplash_access_token', accessToken);

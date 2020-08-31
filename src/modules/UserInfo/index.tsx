@@ -1,5 +1,5 @@
 import React from "react";
-import { TUser } from "../../init/unsplashAPI";
+import { TUser } from "init/unsplashAPI";
 
 type PropTypes = {
   user: TUser;

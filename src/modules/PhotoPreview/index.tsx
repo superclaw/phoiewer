@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { TPhoto } from "../../init/unsplashAPI";
+import { TPhoto } from "init/unsplashAPI";
 
 type PropsType = {
   el: TPhoto;

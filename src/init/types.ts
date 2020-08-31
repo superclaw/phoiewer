@@ -11,6 +11,8 @@ export type TState<T> = {
   };
 };
 
+export type TReducer<T> = (state: T, action: TActionReturns) => T;
+
 export type TReducerFunc<T> = (state: T, ...params: any[]) => T;
 
 export type TActionReturns = {
