@@ -77,7 +77,7 @@ const reducer: TReducer<TPhotoListState> = (state = initState, action) => {
     case 'LIKE_PHOTO_LIST': return updateLikes(state, action.data, action.key);
     case 'LOAD_NEXT': return loadList(state, action.data);
     case 'IS_LOADING': return toggleIsLoading(state);
-    case 'REQUEST_FAILED': return setErrorMessage(state, action.message);
+    case 'REQUEST_FAILED_LIST': return setErrorMessage(state, action.message);
     default: return state;
   }
 };

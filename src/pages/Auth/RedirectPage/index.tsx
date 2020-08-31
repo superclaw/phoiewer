@@ -1,43 +1,27 @@
 import React from "react";
-import { unsplash, errorHandler } from "init/unsplashAPI";
-import { toJson } from "unsplash-js";
 import { Redirect } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useAuth } from "init/hooks";
 import { logIn } from "../actions";
-
-type TAccessToken = {
-  access_token: string;
-  created_at: number;
-  refresh_token: string;
-  scope: string;
-  token_type: string;
-};
+import { TState } from "init/types";
+import { TAuthState } from "../reducer";
 
 const RedirectPage = () => {
+  const code = new URLSearchParams(window.location.search).get('code');
   const dispatch = useDispatch();
+  const isFailed = useSelector(({ login }: TState<TAuthState>) => login.requestFailed.status);
+  const isLoggedIn = useAuth().isLoggedIn;
 
-  const l = window.location;
-  const url = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + l.pathname.replace('/redirect', '/');
-  const code = new URLSearchParams(l.search).get('code');
+  if (!code || isLoggedIn) {
+    return <Redirect to="/"/>;
 
-  if (!code) return <Redirect to="/" />;
+  } else if (isFailed) {
+    return <Redirect to="/auth" />
 
-  unsplash.auth.userAuthentication(code).then(res => {
-    if (!res.ok) {
-      alert(`Ошибка: ${errorHandler(res.status)}`);
-      l.replace(url);
-    }
-
-    return toJson(res).catch((err: string) => {
-      alert(`Ошибка: ${err}`);
-      l.replace(url);
-    }).then((json: TAccessToken) => {
-      if (json.access_token) dispatch(logIn(json.access_token));
-      l.replace(url);
-    });
-  });
-
-  return <div>Идёт авторизация...</div>;
+  } else {
+    dispatch(logIn(code));
+    return <div>Идёт авторизация...</div>;
+  }
 };
 
 export default RedirectPage;

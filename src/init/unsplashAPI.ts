@@ -66,6 +66,14 @@ export type TLikeResponse = {
   user: TUser;
 };
 
+export type TAccessToken = {
+  access_token: string;
+  created_at: number;
+  refresh_token: string;
+  scope: string;
+  token_type: string;
+};
+
 const IS_LOCAL: boolean = window.location.hostname !== 'superclaw.github.io';
 
 export const unsplash = new Unsplash({
@@ -98,6 +106,46 @@ export const errorHandler = (code: number): string => {
       return `Неизвестная ошибка, код: ${code}`;
   }
 };
+
+export const authUser: UnsplashApi.Auth['userAuthentication'] = (code) =>
+  unsplash.auth.userAuthentication(code).then(res => {
+    if (!res.ok) return {
+      failed: true,
+      message: errorHandler(res.status),
+    }
+
+    return toJson(res).catch((err: string) => ({
+      failed: true,
+      message: err,
+    })).then((json: TAccessToken) => {
+
+      if (json.access_token) {
+        unsplash.auth.setBearerToken(json.access_token);
+
+        return {
+          accessToken: json.access_token,
+        };
+
+      } else return ({
+        failed: true,
+        message: errorHandler(404),
+      });
+    });
+  });
+
+export const getUser: UnsplashApi.CurrentUser['profile'] = () =>
+  unsplash.currentUser.profile().then(res => {
+
+    if (!res.ok) return {
+      failed: true,
+      message: errorHandler(res.status),
+    }
+
+    return toJson(res).catch((err: string) => ({
+      failed: true,
+      message: err,
+    })).then((json: TUser) => json);
+  });
 
 export const listPhotos: UnsplashApi.Photo['listPhotos'] =
   (page, perPage, orderBy) =>

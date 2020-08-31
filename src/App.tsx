@@ -2,6 +2,7 @@ import "styles/global.scss";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import Layout from "layout";
 import Main from "pages/Main";
 import Details from "pages/Details";
 import Auth from "pages/Auth";
@@ -20,7 +21,9 @@ const App = () => (
           <RedirectPage />
         </Route>
         <Route exact path="/">
-          <Main />
+          <Layout>
+            <Main />
+          </Layout>
         </Route>
       </Switch>
     </Router>

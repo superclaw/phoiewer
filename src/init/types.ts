@@ -3,6 +3,7 @@ import { Dispatch as IDispatch } from "redux";
 export type TData = Response & {
     failed?: boolean;
     message?: string;
+    [n: string]: any;
 };
 
 export type TState<T> = {

@@ -1,14 +1,14 @@
 import React from "react";
 import { likePhotoList, loadData } from "../actions";
 import { TPhotosList } from "init/unsplashAPI";
-import { Dispatch } from "redux";
+import { Dispatch as IDispatch } from "redux";
 import PhotoPreview from "modules/PhotoPreview";
 import UserInfo from "modules/UserInfo";
 import DateString from "modules/DateString";
 import Button from "modules/Button";
 
 type PropsType = {
-  dispatch: Dispatch<any>;
+  dispatch: IDispatch<any>;
   list: TPhotosList;
   requestFailed: {
     status: boolean;
@@ -17,7 +17,7 @@ type PropsType = {
 };
 
 class List extends React.Component<PropsType> {
-  private readonly dispatch: Dispatch<any>;
+  private readonly dispatch: IDispatch<any>;
 
   public constructor(props: PropsType) {
     super(props);

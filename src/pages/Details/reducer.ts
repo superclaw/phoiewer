@@ -56,8 +56,8 @@ const reducer: TReducer<TDetailsState> = (state = initState, action) => {
   switch (action.type) {
     case 'CLEAR_DATA': return clearData(state);
     case 'LOAD_PHOTO': return updatePhoto(state, action.data);
-    case 'LIKE_PHOTO': return updateLikes(state, action.data);
-    case 'REQUEST_FAILED': return setErrorMessage(state, action.message);
+    case 'LIKE_PHOTO_DETAILS': return updateLikes(state, action.data);
+    case 'REQUEST_FAILED_DETAILS': return setErrorMessage(state, action.message);
     default: return state;
   }
 };

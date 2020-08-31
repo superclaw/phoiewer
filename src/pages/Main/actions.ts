@@ -12,7 +12,7 @@ export const loadData: TAsyncAction = (i: number) =>
 
     if (data.failed) {
       dispatch({
-        type: 'REQUEST_FAILED',
+        type: 'REQUEST_FAILED_LIST',
         message: data.message,
       });
 
@@ -31,7 +31,7 @@ export const likePhotoList: TAsyncAction = (id: string, isLiked: boolean, key: n
 
     if (data.failed) {
       dispatch({
-        type: 'REQUEST_FAILED',
+        type: 'REQUEST_FAILED_LIST',
         message: data.message,
       });
 
