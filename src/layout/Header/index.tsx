@@ -5,16 +5,17 @@ import { useDispatch } from "react-redux";
 import { loadUser, logOut } from "pages/Auth/actions";
 import UserInfo from "modules/UserInfo";
 import Button from "modules/Button";
-import logo from "assets/logo.png";
+import logoMin from "assets/logo-min.png";
+import styles from "./header.module.scss";
 
 const Header = () => {
   const dispatch = useDispatch();
   const auth = useAuth();
 
-  if (!auth.user && !auth.requestFailed.status) dispatch(loadUser());
+  if (!auth.user && !auth.requestFailed.status && auth.isLoggedIn) dispatch(loadUser());
 
   return (
-    <header>
+    <header className={styles.wrapper}>
       {
         auth.user
           ? <UserInfo user={auth.user} />
@@ -23,7 +24,7 @@ const Header = () => {
             : <div>Загрузка...</div>
       }
       <Link to="/">
-        <img src={logo} alt="Phoiewer" />
+        <img src={logoMin} alt="Phoiewer" />
       </Link>
       <Button text="Выйти" onClick={() => dispatch(logOut())} />
     </header>
