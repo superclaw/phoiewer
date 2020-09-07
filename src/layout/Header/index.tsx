@@ -6,6 +6,7 @@ import { loadUser, logOut } from "pages/Auth/actions";
 import UserInfo from "modules/UserInfo";
 import Button from "modules/Button";
 import logoMin from "assets/logo-min.png";
+import logoBig from "assets/logo.png";
 import styles from "./header.module.scss";
 
 const Header = () => {
@@ -16,17 +17,20 @@ const Header = () => {
 
   return (
     <header className={styles.wrapper}>
-      {
-        auth.user
-          ? <UserInfo user={auth.user} />
-          : auth.requestFailed.status
-            ? <div>{auth.requestFailed.errorMessage}</div>
-            : <div>Загрузка...</div>
-      }
-      <Link to="/">
-        <img src={logoMin} alt="Phoiewer" />
+      <div className={styles.user}>
+        {
+          auth.user
+            ? <UserInfo user={auth.user} />
+            : <div className={styles.loading} />
+        }
+      </div>
+      <Link className={styles.logo} to="/">
+        <picture>
+          <source srcSet={logoBig} media="(min-width: 769px)" />
+          <img src={logoMin} alt="Phoiewer" />
+        </picture>
       </Link>
-      <Button text="Выйти" onClick={() => dispatch(logOut())} />
+      <Button className={styles['logout-btn']} text="Выйти" onClick={() => dispatch(logOut())} />
     </header>
   );
 };

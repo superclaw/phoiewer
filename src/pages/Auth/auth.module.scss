@@ -3,13 +3,35 @@
 .wrapper {
   @include wrapper;
   @include stretch;
-  @include flex-center;
+  @include flex__center;
+}
+
+.error {
+  @include animation__hint;
+  padding: 5px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 14px;
+  border: 1px dashed $error;
+  border-radius: 5px;
+
+  &__header {
+    color: $error;
+    font-size: inherit;
+    font-weight: 500;
+  }
+
+  @include tablet {
+    padding: 8px;
+    font-size: 18px;
+  }
 }
 
 .message {
   width: 100%;
   text-align: center;
   font-size: 18px;
+  font-weight: 400;
 
   @include mobile {
     width: 440px;
@@ -23,8 +45,7 @@
 }
 
 .login-btn {
-  @include primary-btn;
-
+  @include btn__primary;
   margin-top: 30px;
   padding: 12px 30px;
   font-weight: 500;
@@ -33,5 +54,14 @@
   @include tablet {
     padding: 18px 45px;
     font-size: 20px;
+  }
+}
+
+.loading {
+  @include animation__loading(11px);
+  margin-top: 20px;
+
+  @include tablet {
+    @include animation__loading(16px);
   }
 }

@@ -1,0 +1,51 @@
+@mixin loading__element($size) {
+  height: $size;
+  width: $size;
+  display: block;
+  background-color: transparent;
+  border-radius: 100%;
+  animation-name: loading;
+  animation-duration: 1.0675s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+}
+
+@mixin animation__loading($size) {
+  @include loading__element($size);
+  $shift: ($size + ($size / 2.25));
+  position: relative;
+  margin-right: $shift;
+  margin-left: $shift;
+  animation-delay: 0.4955s;
+
+  &::before {
+    @include loading__element($size);
+    content: '';
+    position: absolute;
+    left: 0 - $shift;
+    animation-delay: 0.2095s;
+  }
+
+  &::after {
+    @include loading__element($size);
+    content: '';
+    position: absolute;
+    right: 0 - $shift;
+    animation-delay: 0.6385s;
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: scale(.7);
+  }
+
+  50% {
+    background-color: $primary;
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(.7);
+  }
+}

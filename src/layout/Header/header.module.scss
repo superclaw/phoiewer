@@ -2,4 +2,54 @@
 
 .wrapper {
   @include wrapper;
+  @include flex__row;
+}
+
+.user {
+  width: 40px;
+  min-height: 40px;
+  @include flex__center;
+}
+
+.loading {
+  @include animation__loading(9px);
+}
+
+.logo {
+  width: 120px;
+  height: 100%;
+  padding-top: 4px;
+
+  @include mobile {
+    width: auto;
+  }
+
+  @include tablet {
+    width: 250px;
+  }
+
+  @include laptop {
+    width: auto;
+  }
+}
+
+.logout-btn {
+  @include btn__secondary;
+  padding: 1px 6px;
+  font-weight: 500;
+  font-size: 14px;
+
+  @include mobile {
+    padding: 4px 13px;
+  }
+
+  @include tablet {
+    padding: 10px 30px;
+    font-size: 18px;
+  }
+
+  @include laptop {
+    padding: 13px 38px;
+    font-size: 20px;
+  }
 }

@@ -1,0 +1,34 @@
+@import "mixins/media";
+@import "mixins/flex";
+@import "mixins/buttons";
+@import "mixins/animations";
+
+@mixin stretch {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@mixin wrapper {
+  min-width: 320px;
+  margin: 0 auto;
+  padding: 20px;
+
+  @include mobile {
+    max-width: 480px;
+  }
+
+  @include tablet {
+    max-width: 768px;
+  }
+
+  @include laptop {
+    max-width: 1000px;
+  }
+
+  @include desktop {
+    max-width: 1342px;
+  }
+}

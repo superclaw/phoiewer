@@ -14,13 +14,16 @@ const Auth = () => {
   return useAuth().isLoggedIn ? <Redirect to="/" /> : (
     <div className={styles.wrapper}>
       {requestFailed.status && (
-        <p className={styles.error}>
-          Ошибка авторизации: {requestFailed.errorMessage}
-        </p>
+        <div className={styles.error}>
+          <h3 className={styles['error__header']}>
+            Ошибка авторизации:
+          </h3>
+          {requestFailed.errorMessage}
+        </div>
       )}
-      <p className={styles.message}>
+      <h2 className={styles.message}>
         Для просмотра этой страницы необходимо авторизоваться
-      </p>
+      </h2>
       <Button className={styles['login-btn']} text="Войти" onClick={() => {
         window.location.replace(authenticationUrl);
       }} />

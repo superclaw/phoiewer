@@ -3,7 +3,6 @@ import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth } from "init/hooks";
 import { loadData } from "./actions";
-import { logOut } from "pages/Auth/actions";
 import { TState} from "init/types";
 import { TPhotoListState } from "./reducer";
 import List from "./List";
@@ -22,7 +21,6 @@ const Main = () => {
 
   return query ? <Redirect to={query.replace(/~and~/g, '&') + hash} /> : !isLoggedIn ? <Redirect to="/auth" /> : (
       <div className="wrapper">
-        <Button text="Выйти" onClick={() => dispatch(logOut())} />
         <List
             list={list}
             requestFailed={requestFailed}

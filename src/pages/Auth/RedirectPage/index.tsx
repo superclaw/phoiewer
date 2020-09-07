@@ -5,6 +5,7 @@ import { useAuth } from "init/hooks";
 import { logIn } from "../actions";
 import { TState } from "init/types";
 import { TAuthState } from "../reducer";
+import styles from "../auth.module.scss";
 
 const RedirectPage = () => {
   const code = new URLSearchParams(window.location.search).get('code');
@@ -20,7 +21,12 @@ const RedirectPage = () => {
 
   } else {
     dispatch(logIn(code));
-    return <div>Идёт авторизация...</div>;
+    return (
+      <div className={styles.wrapper}>
+        <h2 className={styles.message}>Идёт авторизация...</h2>
+        <div className={styles.loading} />
+      </div>
+    );
   }
 };
 
