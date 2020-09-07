@@ -9,7 +9,14 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: $lightest;
+  font: 400 16px/24px "Roboto", sans-serif;
+  color: $dark;
+  background-color: $background;
+}
+
+img {
+  width: 100%;
+  height: auto;
 }
 
 .visually-hidden {

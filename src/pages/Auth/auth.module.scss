@@ -2,4 +2,36 @@
 
 .wrapper {
   @include wrapper;
+  @include stretch;
+  @include flex-center;
+}
+
+.message {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+
+  @include mobile {
+    width: 440px;
+  }
+
+  @include tablet {
+    width: 600px;
+    font-size: 28px;
+    line-height: 32px;
+  }
+}
+
+.login-btn {
+  @include primary-btn;
+
+  margin-top: 30px;
+  padding: 12px 30px;
+  font-weight: 500;
+  font-size: 16px;
+
+  @include tablet {
+    padding: 18px 45px;
+    font-size: 20px;
+  }
 }

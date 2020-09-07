@@ -1,0 +1,35 @@
+@mixin non-touch {
+  @media (pointer: fine) {
+    @content;
+  }
+}
+
+@mixin touch {
+  @media (pointer: coarse) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (min-width: 481px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 769px) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (min-width: 1025px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1367px) {
+    @content;
+  }
+}
