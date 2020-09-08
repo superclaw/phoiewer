@@ -1,9 +1,21 @@
 @import "src/styles/config";
 
-.wrapper {
-  @include wrapper;
+.auth {
   @include stretch;
   @include flex__center;
+  @include wrapper;
+
+  &__wrapper {
+    @include flex__center;
+    padding: 30px 20px;
+    background-color: #fff;
+    border-radius: $radius;
+    box-shadow: 0 40px 90px $shadow;
+
+    @include tablet {
+      padding: 40px;
+    }
+  }
 }
 
 .error {
@@ -13,7 +25,7 @@
   text-align: center;
   font-size: 14px;
   border: 1px dashed $error;
-  border-radius: 5px;
+  border-radius: $radius;
 
   &__header {
     color: $error;
@@ -34,12 +46,12 @@
   font-weight: 400;
 
   @include mobile {
-    width: 440px;
+    width: 400px;
   }
 
   @include tablet {
     width: 600px;
-    font-size: 28px;
+    font-size: 24px;
     line-height: 32px;
   }
 }

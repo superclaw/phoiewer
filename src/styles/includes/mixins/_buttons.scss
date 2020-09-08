@@ -1,21 +1,20 @@
 @mixin btn__primary {
   color: #fff;
   background-color: $primary;
+  border-radius: $radius;
   transition: background-color $transition;
 
-  @include touch {
-    &:active {
-      background-color: lighten($primary, 15%);
-    }
+  &:active {
+    background-color: lighten($primary, 15%);
   }
 
   @include non-touch {
-    &:hover {
+    &:hover, &:focus {
       background-color: darken($primary, 15%);
     }
 
     &:focus {
-      background-color: lighten($primary, 15%);
+      outline: none;
     }
   }
 }
@@ -24,6 +23,7 @@
   color: $secondary;
   background-color: transparent;
   border: 1px solid $secondary;
+  border-radius: $radius;
   transition: background-color $transition, color $transition, border-color $transition;
 
   @include touch {
@@ -34,15 +34,19 @@
   }
 
   @include non-touch {
-    &:hover {
+    &:hover, &:focus {
       background-color: $secondary;
       color: #fff;
     }
 
-    &:focus {
+    &:active {
       background-color: lighten($secondary, 25%);
       border-color: lighten($secondary, 25%);
       color: #fff;
+    }
+
+    &:focus {
+      outline: none;
     }
   }
 }

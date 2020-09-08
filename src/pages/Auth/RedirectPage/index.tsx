@@ -22,7 +22,7 @@ const RedirectPage = () => {
   } else {
     dispatch(logIn(code));
     return (
-      <div className={styles.wrapper}>
+      <div className={styles.auth}>
         <h2 className={styles.message}>Идёт авторизация...</h2>
         <div className={styles.loading} />
       </div>

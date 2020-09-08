@@ -16,21 +16,23 @@ const Header = () => {
   if (!auth.user && !auth.requestFailed.status && auth.isLoggedIn) dispatch(loadUser());
 
   return (
-    <header className={styles.wrapper}>
-      <div className={styles.user}>
-        {
-          auth.user
-            ? <UserInfo user={auth.user} />
-            : <div className={styles.loading} />
-        }
+    <header className={styles.header}>
+      <div className={styles['header__wrapper']}>
+        <div className={styles.userinfo}>
+          {
+            auth.user
+              ? <UserInfo user={auth.user} externalStyles={styles} />
+              : <div className={styles.loading} />
+          }
+        </div>
+        <Link className={styles.logo} to="/">
+          <picture>
+            <source srcSet={logoBig} media="(min-width: 769px)" />
+            <img src={logoMin} alt="Phoiewer" />
+          </picture>
+        </Link>
+        <Button className={styles['logout-btn']} text="Выйти" onClick={() => dispatch(logOut())} />
       </div>
-      <Link className={styles.logo} to="/">
-        <picture>
-          <source srcSet={logoBig} media="(min-width: 769px)" />
-          <img src={logoMin} alt="Phoiewer" />
-        </picture>
-      </Link>
-      <Button className={styles['logout-btn']} text="Выйти" onClick={() => dispatch(logOut())} />
     </header>
   );
 };

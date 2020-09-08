@@ -12,21 +12,23 @@ const Auth = () => {
   const requestFailed = useSelector(({ login }: TState<TAuthState>) => login.requestFailed);
 
   return useAuth().isLoggedIn ? <Redirect to="/" /> : (
-    <div className={styles.wrapper}>
-      {requestFailed.status && (
-        <div className={styles.error}>
-          <h3 className={styles['error__header']}>
-            Ошибка авторизации:
-          </h3>
-          {requestFailed.errorMessage}
-        </div>
-      )}
-      <h2 className={styles.message}>
-        Для просмотра этой страницы необходимо авторизоваться
-      </h2>
-      <Button className={styles['login-btn']} text="Войти" onClick={() => {
-        window.location.replace(authenticationUrl);
-      }} />
+    <div className={styles.auth}>
+      <div className={styles['auth__wrapper']}>
+        {requestFailed.status && (
+          <div className={styles.error}>
+            <h3 className={styles['error__header']}>
+              Ошибка авторизации:
+            </h3>
+            {requestFailed.errorMessage}
+          </div>
+        )}
+        <h2 className={styles.message}>
+          Для просмотра этой страницы необходимо авторизоваться
+        </h2>
+        <Button className={styles['login-btn']} text="Войти" onClick={() => {
+          window.location.replace(authenticationUrl);
+        }} />
+      </div>
     </div>
   )
 };
