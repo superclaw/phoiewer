@@ -41,6 +41,7 @@ export type TPhoto = {
   liked_by_user: boolean;
   likes: number;
   links: {
+    download_location: string;
     [n: string]: string;
   };
   promoted_at: string | null;
@@ -195,3 +196,6 @@ export const getPhoto: UnsplashApi.Photo['getPhoto'] = (id) =>
       message: err,
     })).then((json: any) => json);
   });
+
+export const downloadEventTrigger: UnsplashApi.Photo['downloadPhoto'] = (photo) =>
+  unsplash.photos.downloadPhoto(photo);

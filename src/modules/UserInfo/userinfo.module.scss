@@ -14,7 +14,7 @@
 
 .link {
   @include flex;
-  width: auto;
+  width: fit-content;
   transition: opacity $transition;
 
   @include touch {

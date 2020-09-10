@@ -12,7 +12,9 @@ const App = () => (
     <Router basename="/phoiewer/build/">
       <Switch>
         <Route exact path="/photo-:id">
-          <Details />
+          <Layout>
+            <Details />
+          </Layout>
         </Route>
         <Route exact path="/auth">
           <Auth />

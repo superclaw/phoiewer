@@ -1,0 +1,70 @@
+@import "src/styles/config";
+
+.container {
+  @include flex__row;
+  align-items: stretch;
+}
+
+.list {
+  @include flex__row;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: stretch;
+
+  &:not(:last-child) {
+    margin-right: 30px;
+  }
+
+  &__item {
+    background-color: #fff;
+    box-shadow: 0 8px 12px lighten($shadow, 15%);
+
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__info-top, &__info-bottom {
+    @include flex__row;
+    width: 100%;
+    padding: 10px 20px;
+  }
+
+  &__link {
+    font-size: 14px;
+    color: $medium;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom-color $transition, color $transition;
+
+    @include touch {
+      &:active {
+        color: $primary;
+        border-bottom-color: currentColor;
+      }
+    }
+
+    @include non-touch {
+      &:hover, &:focus {
+        border-bottom-color: currentColor;
+        outline: none;
+      }
+
+      &:active {
+        color: $primary;
+      }
+    }
+  }
+}
+
+.date {
+  font-weight: 700;
+  color: $medium;
+}
+
+.download-btn {
+  @include btn__primary;
+  padding: 1px 8px;
+  margin-right: auto;
+  margin-left: 20px;
+  font-size: 14px;
+}

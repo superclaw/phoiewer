@@ -1,3 +1,6 @@
+@import "src/styles/config";
+@import "like";
+
 .btn {
   display: block;
   font: inherit;
@@ -5,4 +8,40 @@
   background-color: transparent;
   user-select: none;
   cursor: pointer;
+
+  &--load {
+    color: $primary;
+    border: 1px dotted currentColor;
+    border-radius: $radius;
+    padding: 3px 10px;
+    font-weight: 700;
+    font-size: 14px;
+    transition: color $transition, border-color $transition;
+
+    &:active {
+      color: lighten($primary, 15%);
+    }
+
+    @include non-touch {
+      &:hover, &:focus {
+        color: darken($primary, 15%);
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  &--like {
+    @include like;
+  }
+
+  &--liked {
+    @include liked;
+  }
+}
+
+.loading {
+  @include animation__loading(11px);
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { useAuth } from "init/hooks";
 import { useDispatch } from "react-redux";
 import { loadUser, logOut } from "pages/Auth/actions";
@@ -15,7 +15,7 @@ const Header = () => {
 
   if (!auth.user && !auth.requestFailed.status && auth.isLoggedIn) dispatch(loadUser());
 
-  return (
+  return !auth.isLoggedIn ? <Redirect to="/auth" /> : (
     <header className={styles.header}>
       <div className={styles['header__wrapper']}>
         <div className={styles.userinfo}>
@@ -25,12 +25,17 @@ const Header = () => {
               : <div className={styles.loading} />
           }
         </div>
-        <Link className={styles.logo} to="/">
+        <a
+          className={styles.logo}
+          href="https://unsplash.com/?utm_source=phoiewer&utm_medium=referral"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <picture>
             <source srcSet={logoBig} media="(min-width: 769px)" />
             <img src={logoMin} alt="Phoiewer" />
           </picture>
-        </Link>
+        </a>
         <Button className={styles['logout-btn']} text="Выйти" onClick={() => dispatch(logOut())} />
       </div>
     </header>

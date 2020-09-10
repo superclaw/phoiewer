@@ -14,7 +14,12 @@ const UserInfo = ({ user, externalStyles }: PropTypes) => {
   const nameStyles = classNames(internalStyles.name, externalStyles && externalStyles['userinfo__name']);
 
   return (
-    <a className={linkStyles} href={`https://unsplash.com/@${user.username}`} target="__blank">
+    <a
+      className={linkStyles}
+      href={`https://unsplash.com/@${user.username}?utm_source=phoiewer&utm_medium=referral`}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <img className={avatarStyles} src={user.profile_image.small} alt={user.name} />
       <span className={nameStyles}>
         {user.name}

@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { TState } from "init/types";
 import { TAuthState } from "./reducer";
 import Button from "modules/Button";
+import Error from "modules/Error";
 import styles from "./auth.module.scss";
 
 const Auth = () => {
@@ -14,14 +15,13 @@ const Auth = () => {
   return useAuth().isLoggedIn ? <Redirect to="/" /> : (
     <div className={styles.auth}>
       <div className={styles['auth__wrapper']}>
-        {requestFailed.status && (
-          <div className={styles.error}>
-            <h3 className={styles['error__header']}>
-              Ошибка авторизации:
-            </h3>
-            {requestFailed.errorMessage}
-          </div>
-        )}
+        {
+          requestFailed.status && <Error
+              header={'Ошибка авторизации:'}
+              message={requestFailed.errorMessage}
+              className={styles.error}
+          />
+        }
         <h2 className={styles.message}>
           Для просмотра этой страницы необходимо авторизоваться
         </h2>

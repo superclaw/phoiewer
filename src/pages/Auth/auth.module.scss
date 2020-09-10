@@ -19,24 +19,7 @@
 }
 
 .error {
-  @include animation__hint;
-  padding: 5px;
   margin-bottom: 30px;
-  text-align: center;
-  font-size: 14px;
-  border: 1px dashed $error;
-  border-radius: $radius;
-
-  &__header {
-    color: $error;
-    font-size: inherit;
-    font-weight: 500;
-  }
-
-  @include tablet {
-    padding: 8px;
-    font-size: 18px;
-  }
 }
 
 .message {

@@ -1,0 +1,42 @@
+@mixin like {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  background: url("../../assets/like.svg") center no-repeat;
+  transition: background $transition, transform $transition;
+
+  @include non-touch {
+    &:hover {
+      background: url("../../assets/like-hover.svg") center no-repeat;
+    }
+
+    &:hover, &:focus {
+      outline: none;
+      transform: scale(1.2);
+    }
+  }
+
+  &:active {
+    transform: scale(.8);
+  }
+}
+
+@mixin liked {
+  position: relative;
+  background: url("../../assets/like-filled.svg") center no-repeat;
+
+  @include non-touch {
+    &:hover {
+      background: url("../../assets/like-filled-hover.svg") center no-repeat;
+    }
+
+    &:hover, &:focus {
+      outline: none;
+      transform: scale(1.2);
+    }
+  }
+
+  &:active {
+    transform: scale(.8);
+  }
+}

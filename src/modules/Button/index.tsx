@@ -7,17 +7,14 @@ type PropsType = {
   type?: 'submit' | 'reset' | 'button' | 'like' | 'load';
   text?: string;
   isLoading?: boolean;
+  isLiked?: boolean;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 };
 
-const Button = ({ className = '', type = 'button', text = '', isLoading = false, onClick }: PropsType) => {
-  return isLoading ? (
-    <div>
-      Загрузка...
-    </div>
-  ) : (
+const Button = ({ className = '', type = 'button', text = '', isLoading = false, isLiked = false, onClick }: PropsType) => {
+  return isLoading ? <div className={classnames(styles.loading, className)} /> : (
     <button
-      className={classnames(styles.btn, styles[`btn--${type}`], className)}
+      className={classnames(styles.btn, styles[`btn--${type}`], isLiked && styles['btn--liked'], className)}
       type={type === 'submit' || type === 'reset' ? type : 'button'}
       onClick={onClick}
     >

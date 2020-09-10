@@ -9,6 +9,7 @@ export type TPhotoListState = {
     status: boolean;
     errorMessage: string;
   };
+  screenSize: number;
 };
 
 const initState: TPhotoListState = {
@@ -19,6 +20,7 @@ const initState: TPhotoListState = {
     status: false,
     errorMessage: '',
   },
+  screenSize: window.innerWidth,
 };
 
 const updateLikes: TReducerFunc<TPhotoListState> = (state, { photo }, key) => {
@@ -72,12 +74,18 @@ const toggleIsLoading: TReducerFunc<TPhotoListState> = state => {
   };
 };
 
+const changeScreenSize: TReducerFunc<TPhotoListState> = state => ({
+  ...state,
+  screenSize: window.innerWidth,
+});
+
 const reducer: TReducer<TPhotoListState> = (state = initState, action) => {
   switch (action.type) {
     case 'LIKE_PHOTO_LIST': return updateLikes(state, action.data, action.key);
     case 'LOAD_NEXT': return loadList(state, action.data);
     case 'IS_LOADING': return toggleIsLoading(state);
     case 'REQUEST_FAILED_LIST': return setErrorMessage(state, action.message);
+    case 'CHANGE_SCREEN_SIZE': return changeScreenSize(state);
     default: return state;
   }
 };

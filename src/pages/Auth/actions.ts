@@ -12,7 +12,7 @@ export const logIn: TAsyncAction = (code: string) => async function(dispatch) {
     });
 
   } else {
-    Cookies.set('unsplash_access_token', data.accessToken);
+    Cookies.set('unsplash_access_token', data.accessToken, {expires: 31});
     dispatch(updateAuth());
     dispatch(loadUser());
   }
