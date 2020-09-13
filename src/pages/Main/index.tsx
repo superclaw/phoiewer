@@ -1,6 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useScreenSize } from "init/hooks";
 import { loadData } from "./actions";
 import { TState } from "init/types";
 import { TPhotoListState } from "./reducer";
@@ -16,15 +17,20 @@ const Main = () => {
   const dispatch = useDispatch();
   const photoList = useSelector(({ photoList }: TState<TPhotoListState>) => photoList);
 
-  const { page, isLoading, requestFailed, list, screenSize } = photoList;
+  const { page, isLoading, requestFailed, list} = photoList;
+
+  const [getScreenSize, setScreenSize] = useScreenSize();
 
   return query ? <Redirect to={query.replace(/~and~/g, '&') + hash} /> : (
       <div className={styles.main}>
         <List
             list={list}
+            page={page}
+            isLoading={isLoading}
             requestFailed={requestFailed}
             dispatch={dispatch}
-            screenSize={screenSize}
+            screenSize={getScreenSize()}
+            resizeHandler={setScreenSize}
         />
         <Button
           className={styles['load-btn']}

@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 import { TReducer, TReducerFunc } from "init/types";
-import { TUser } from "../../init/unsplashAPI";
+import { TUser } from "init/unsplashAPI";
 
 export type TAuthState = {
   isLoggedIn: boolean;

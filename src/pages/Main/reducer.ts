@@ -23,10 +23,15 @@ const initState: TPhotoListState = {
   screenSize: window.innerWidth,
 };
 
-const updateLikes: TReducerFunc<TPhotoListState> = (state, { photo }, key) => {
+const updateLikes: TReducerFunc<TPhotoListState> = (state, { photo }, id) => {
   const newList = [ ...state.list ];
-  newList[key].likes = photo.likes;
-  newList[key].liked_by_user = photo.liked_by_user;
+
+  newList.forEach(el => {
+    if (el.id === id) {
+      el.likes = photo.likes;
+      el.liked_by_user = photo.liked_by_user;
+    }
+  });
 
   return {
     ...state,
@@ -45,7 +50,6 @@ const loadList: TReducerFunc<TPhotoListState> = (state, data) => {
         ...list,
         ...data,
     ],
-    isLoading: false,
     requestFailed: {
       ...state.requestFailed,
       status: false,
@@ -63,7 +67,7 @@ const setErrorMessage: TReducerFunc<TPhotoListState> = (state, message) => ({
   },
 });
 
-const toggleIsLoading: TReducerFunc<TPhotoListState> = state => {
+const setIsLoading: TReducerFunc<TPhotoListState> = state => {
   return {
     ...state,
     isLoading: true,
@@ -74,18 +78,20 @@ const toggleIsLoading: TReducerFunc<TPhotoListState> = state => {
   };
 };
 
-const changeScreenSize: TReducerFunc<TPhotoListState> = state => ({
-  ...state,
-  screenSize: window.innerWidth,
-});
+const unsetIsLoading: TReducerFunc<TPhotoListState> = state => {
+  return {
+    ...state,
+    isLoading: false,
+  };
+};
 
 const reducer: TReducer<TPhotoListState> = (state = initState, action) => {
   switch (action.type) {
-    case 'LIKE_PHOTO_LIST': return updateLikes(state, action.data, action.key);
+    case 'LIKE_PHOTO_LIST': return updateLikes(state, action.data, action.id);
     case 'LOAD_NEXT': return loadList(state, action.data);
-    case 'IS_LOADING': return toggleIsLoading(state);
+    case 'IS_LOADING': return setIsLoading(state);
+    case 'LOADING_DONE': return unsetIsLoading(state);
     case 'REQUEST_FAILED_LIST': return setErrorMessage(state, action.message);
-    case 'CHANGE_SCREEN_SIZE': return changeScreenSize(state);
     default: return state;
   }
 };

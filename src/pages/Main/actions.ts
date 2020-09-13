@@ -1,5 +1,5 @@
 import { listPhotos, updateLikes } from "init/unsplashAPI";
-import { TAction, TAsyncAction, TData } from "init/types";
+import { TAsyncAction, TData } from "init/types";
 
 export const loadData: TAsyncAction = (i: number) =>
   async function (dispatch) {
@@ -24,7 +24,7 @@ export const loadData: TAsyncAction = (i: number) =>
     }
   };
 
-export const likePhotoList: TAsyncAction = (id: string, isLiked: boolean, key: number) =>
+export const likePhotoList: TAsyncAction = (id: string, isLiked: boolean) =>
   async function (dispatch) {
 
     const data: TData = await updateLikes(id, isLiked);
@@ -39,11 +39,11 @@ export const likePhotoList: TAsyncAction = (id: string, isLiked: boolean, key: n
       dispatch({
         type: 'LIKE_PHOTO_LIST',
         data: data,
-        key: key,
+        id: id,
       });
     }
   };
 
-export const handleResizeEvent: TAction = () => ({
-  type: 'CHANGE_SCREEN_SIZE',
+export const finishLoading = () => ({
+  type: 'LOADING_DONE',
 });
