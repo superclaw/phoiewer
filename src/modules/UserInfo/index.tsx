@@ -1,5 +1,5 @@
 import React from "react";
-import { TUser } from "init/unsplashAPI";
+import { TUser } from "init/UnsplashApi/types";
 import classNames from "classnames";
 import internalStyles from "./userinfo.module.scss";
 

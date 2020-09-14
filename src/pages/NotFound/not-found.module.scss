@@ -31,14 +31,11 @@
   }
 
   @include tablet {
+    font-size: 56px;
     margin-bottom: 30px;
   }
 
   @include laptop {
-    font-size: 56px;
-  }
-
-  @include desktop {
     font-size: 64px;
     margin-bottom: 40px;
   }

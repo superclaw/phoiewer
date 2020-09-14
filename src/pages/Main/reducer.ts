@@ -1,5 +1,5 @@
 import { TReducer, TReducerFunc } from "init/types";
-import { TPhotosList } from "init/unsplashAPI";
+import { TPhotosList } from "init/UnsplashApi/types";
 
 export type TPhotoListState = {
   list: TPhotosList;
@@ -9,7 +9,6 @@ export type TPhotoListState = {
     status: boolean;
     errorMessage: string;
   };
-  screenSize: number;
 };
 
 const initState: TPhotoListState = {
@@ -20,7 +19,6 @@ const initState: TPhotoListState = {
     status: false,
     errorMessage: '',
   },
-  screenSize: window.innerWidth,
 };
 
 const updateLikes: TReducerFunc<TPhotoListState> = (state, { photo }, id) => {

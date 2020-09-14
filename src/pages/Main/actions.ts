@@ -1,4 +1,4 @@
-import { listPhotos, updateLikes } from "init/unsplashAPI";
+import { listPhotos, updateLikes } from "init/UnsplashApi";
 import { TAsyncAction, TData } from "init/types";
 
 export const loadData: TAsyncAction = (i: number) =>

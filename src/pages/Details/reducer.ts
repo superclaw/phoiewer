@@ -1,5 +1,5 @@
 import { TReducer, TReducerFunc } from "init/types";
-import { TPhoto } from "init/unsplashAPI";
+import { TPhoto } from "init/UnsplashApi/types";
 
 export type TDetailsState = {
   photo?: TPhoto;

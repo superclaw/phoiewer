@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TPhoto } from "init/unsplashAPI";
+import { TPhoto } from "init/UnsplashApi/types";
 import styles from "./photo-preview.module.scss";
 
 type PropsType = {

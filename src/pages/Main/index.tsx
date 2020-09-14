@@ -15,9 +15,9 @@ const Main = () => {
   const hash = l.hash;
 
   const dispatch = useDispatch();
-  const photoList = useSelector(({ photoList }: TState<TPhotoListState>) => photoList);
+  const state = useSelector(({ photoList }: TState<TPhotoListState>) => photoList);
 
-  const { page, isLoading, requestFailed, list} = photoList;
+  const { page, isLoading, requestFailed, list} = state;
 
   const [getScreenSize, setScreenSize] = useScreenSize();
 

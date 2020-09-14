@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearPhoto, loadPhoto, likeDetails } from "./actions";
-import { downloadEventTrigger } from "init/unsplashAPI";
+import { downloadEventTrigger } from "init/UnsplashApi";
 import { TState } from "init/types";
 import { TDetailsState } from "./reducer";
 import PhotoFull from "modules/PhotoFull";

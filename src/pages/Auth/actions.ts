@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
+import { authUser, getUser } from "init/UnsplashApi";
 import { TAction, TAsyncAction, TData } from "init/types";
-import { authUser, getUser } from "init/unsplashAPI";
 
 export const logIn: TAsyncAction = (code: string) => async function(dispatch) {
   const data: TData = await authUser(code);
@@ -20,7 +20,6 @@ export const logIn: TAsyncAction = (code: string) => async function(dispatch) {
 
 export const logOut: TAction = () => {
   Cookies.remove('unsplash_access_token');
-
   return updateAuth();
 };
 

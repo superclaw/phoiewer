@@ -1,6 +1,6 @@
 import React from "react";
-import { TPhoto } from "init/unsplashAPI";
-import styles from "./photofull.module.scss";
+import { TPhoto } from "init/UnsplashApi/types";
+import styles from "./photo-full.module.scss";
 
 type PropsType = {
   photo: TPhoto | undefined;

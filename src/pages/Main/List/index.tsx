@@ -1,8 +1,9 @@
 import React from "react";
-import { likePhotoList, loadData, finishLoading } from "../actions";
-import { downloadEventTrigger, TPhotosList } from "init/unsplashAPI";
 import { Dispatch as IDispatch } from "redux";
 import { Link } from "react-router-dom";
+import { likePhotoList, loadData, finishLoading } from "../actions";
+import { downloadEventTrigger } from "init/UnsplashApi";
+import { TPhotosList } from "init/UnsplashApi/types";
 import PhotoPreview from "modules/PhotoPreview";
 import UserInfo from "modules/UserInfo";
 import DateString from "modules/DateString";

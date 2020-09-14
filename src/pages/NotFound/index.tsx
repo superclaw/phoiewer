@@ -1,6 +1,6 @@
 import React from "react";
-import Layout from "layout";
 import { useAuth } from "init/hooks";
+import Layout from "layout";
 import styles from "./not-found.module.scss";
 
 const NotFound = () => {

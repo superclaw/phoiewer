@@ -1,4 +1,4 @@
-import { getPhoto, updateLikes } from "init/unsplashAPI";
+import { getPhoto, updateLikes } from "init/UnsplashApi";
 import { TAction, TAsyncAction, TData } from "init/types";
 
 export const clearPhoto: TAction = () => ({
