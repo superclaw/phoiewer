@@ -7,6 +7,7 @@ import Main from "pages/Main";
 import Details from "pages/Details";
 import Auth from "pages/Auth";
 import RedirectPage from "pages/Auth/RedirectPage";
+import NotFound from "pages/NotFound";
 
 const App = () => (
     <Router basename="/phoiewer/build/">
@@ -26,6 +27,9 @@ const App = () => (
           <Layout>
             <Main />
           </Layout>
+        </Route>
+        <Route>
+          <NotFound />
         </Route>
       </Switch>
     </Router>
