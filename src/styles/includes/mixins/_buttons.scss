@@ -1,0 +1,52 @@
+@mixin btn__primary {
+  color: #fff;
+  background-color: $primary;
+  border-radius: $radius;
+  transition: background-color $transition;
+
+  &:active {
+    background-color: lighten($primary, 15%);
+  }
+
+  @include non-touch {
+    &:hover, &:focus {
+      background-color: darken($primary, 15%);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+@mixin btn__secondary {
+  color: $secondary;
+  background-color: transparent;
+  border: 1px solid $secondary;
+  border-radius: $radius;
+  transition: background-color $transition, color $transition, border-color $transition;
+
+  @include touch {
+    &:active {
+      background-color: $secondary;
+      color: #fff;
+    }
+  }
+
+  @include non-touch {
+    &:hover, &:focus {
+      background-color: $secondary;
+      color: #fff;
+    }
+
+    &:active {
+      background-color: lighten($secondary, 25%);
+      border-color: lighten($secondary, 25%);
+      color: #fff;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

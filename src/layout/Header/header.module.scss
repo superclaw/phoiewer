@@ -1,0 +1,99 @@
+@import "src/styles/config";
+
+.header {
+  background-color: #fff;
+  box-shadow: 0 0 15px $shadow;
+
+  &__wrapper {
+    @include wrapper;
+    @include flex__row;
+  }
+}
+
+.userinfo {
+  width: 40px;
+  min-height: 40px;
+  @include flex__center;
+
+  @include tablet {
+    width: 46px;
+    min-height: 46px;
+  }
+
+  @include laptop {
+    width: auto;
+    min-width: 140px;
+    max-width: 300px;
+    min-height: 52px;
+  }
+
+  &__link {
+    width: 100%;
+  }
+
+  &__avatar {
+    width: 100%;
+
+    @include laptop {
+      width: 52px;
+    }
+  }
+
+  &__name {
+    display: none;
+    font-size: 18px;
+
+    @include laptop {
+      display: block;
+    }
+  }
+}
+
+.loading {
+  @include animation__loading(9px);
+}
+
+.logo {
+  width: 120px;
+  height: 100%;
+  padding-top: 4px;
+  transition: opacity $transition;
+
+  @include mobile {
+    width: auto;
+    padding-top: 8px;
+  }
+
+  @include tablet {
+    width: 250px;
+  }
+
+  @include laptop {
+    width: auto;
+  }
+
+  &:active {
+    opacity: $opacity;
+  }
+}
+
+.logout-btn {
+  @include btn__secondary;
+  padding: 1px 6px;
+  font-weight: 500;
+  font-size: 14px;
+
+  @include mobile {
+    padding: 4px 13px;
+  }
+
+  @include tablet {
+    padding: 10px 30px;
+    font-size: 18px;
+  }
+
+  @include laptop {
+    padding: 13px 38px;
+    font-size: 20px;
+  }
+}

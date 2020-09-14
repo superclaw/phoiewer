@@ -1,0 +1,49 @@
+@import "src/styles/config";
+
+.avatar {
+  width: 40px;
+  display: block;
+}
+
+.name {
+  margin-left: 10px;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom-color $transition, color $transition;
+}
+
+.link {
+  @include flex;
+  width: fit-content;
+  transition: opacity $transition;
+
+  @include touch {
+    &:active .name {
+      color: $primary;
+      border-bottom-color: currentColor;
+    }
+  }
+
+  @include non-touch {
+    &:hover .name {
+      border-bottom-color: currentColor;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus .name {
+      color: $primary;
+      border-bottom-color: currentColor;
+    }
+
+    &:active .name {
+      color: $primary;
+    }
+
+    &:active {
+      opacity: $opacity;
+    }
+  }
+}

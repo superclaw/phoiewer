@@ -1,0 +1,145 @@
+@import "src/styles/config";
+
+.wrapper {
+  @include wrapper;
+  @include flex__center;
+  background-color: #fff;
+  box-shadow: 0 40px 90px $shadow;
+
+  &__top {
+    position: relative;
+    width: 100%;
+  }
+}
+
+.back-bth {
+  position: relative;
+  z-index: 2;
+  @include btn__secondary;
+  padding: 1px 6px;
+  margin-bottom: 20px;
+  margin-right: auto;
+  font-size: 14px;
+  font-weight: 500;
+
+  @include mobile {
+    padding: 4px 13px;
+  }
+
+  @include tablet {
+    padding: 10px 30px;
+    font-size: 18px;
+  }
+
+  @include laptop {
+    padding: 13px 38px;
+    font-size: 20px;
+  }
+}
+
+.info {
+  width: 100%;
+  @include flex__row;
+  flex-wrap: wrap;
+  margin-top: 20px;
+
+  &__user {
+    order: 1;
+  }
+
+  &__likes {
+    @include flex__row;
+    margin-left: auto;
+    order: 2;
+
+    @include tablet {
+      margin-left: 20px;
+      order: 3;
+    }
+  }
+
+  &__like-btn {
+    margin-right: 5px;
+  }
+
+  &__date {
+    width: 100%;
+    margin-top: 10px;
+    order: 3;
+    text-align: center;
+    font-weight: 700;
+    color: $medium;
+    font-size: 14px;
+
+    @include tablet {
+      width: fit-content;
+      margin-top: 0;
+      margin-left: auto;
+      order: 2;
+      font-size: 16px;
+    }
+  }
+
+  &__download {
+    width: 100%;
+    @include flex__col;
+    margin-top: 20px;
+    order: 4;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    @include laptop {
+      justify-content: flex-end;
+      font-size: 18px;
+    }
+  }
+}
+
+.download {
+  @include flex__row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+
+  @include tablet {
+    margin-top: 0;
+    margin-left: 20px;
+  }
+
+  &__item {
+    padding: 5px;
+
+    @include tablet {
+      padding: 0;
+
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  &__btn {
+    @include tablet {
+      padding: 5px 12px;
+      font-size: 16px;
+    }
+
+    @include desktop {
+      padding: 8px 20px;
+      font-size: 18px;
+    }
+  }
+}
+
+.loading {
+  &-container {
+    @include stretch;
+    z-index: 1;
+    @include flex__center;
+  }
+
+  @include animation__loading(11px);
+}

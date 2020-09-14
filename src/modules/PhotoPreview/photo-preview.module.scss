@@ -1,0 +1,17 @@
+@import "src/styles/config";
+
+.container {
+  position: relative;
+  z-index: 1;
+  @include flex__center;
+  background-color: #fff;
+}
+
+.img {
+  @include stretch;
+  display: block;
+}
+
+.loading {
+  @include animation__loading(20px);
+}

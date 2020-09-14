@@ -1,0 +1,62 @@
+@import "src/styles/config";
+
+.auth {
+  @include stretch;
+  @include flex__center;
+  @include wrapper;
+
+  &__wrapper {
+    @include flex__center;
+    padding: 30px 20px;
+    background-color: #fff;
+    border-radius: $radius;
+    box-shadow: 0 40px 90px $shadow;
+
+    @include tablet {
+      padding: 40px;
+    }
+  }
+}
+
+.error {
+  margin-bottom: 30px;
+}
+
+.message {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 400;
+
+  @include mobile {
+    width: 400px;
+  }
+
+  @include tablet {
+    width: 600px;
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+.login-btn {
+  @include btn__primary;
+  margin-top: 30px;
+  padding: 12px 30px;
+  font-weight: 500;
+  font-size: 16px;
+
+  @include tablet {
+    padding: 18px 45px;
+    font-size: 20px;
+  }
+}
+
+.loading {
+  @include animation__loading(11px);
+  margin-top: 20px;
+
+  @include tablet {
+    @include animation__loading(16px);
+  }
+}

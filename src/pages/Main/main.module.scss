@@ -1,0 +1,11 @@
+@import "src/styles/config";
+
+.main {
+  @include wrapper;
+  @include flex__col;
+  padding: 0;
+}
+
+.load-btn {
+  margin-top: 30px;
+}

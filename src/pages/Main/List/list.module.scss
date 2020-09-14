@@ -1,0 +1,110 @@
+@import "src/styles/config";
+
+.container {
+  @include flex__row;
+  align-items: stretch;
+}
+
+.list {
+  @include flex__col;
+
+  &:not(:last-child) {
+    margin-right: 30px;
+  }
+
+  &__item {
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 8px 12px lighten($shadow, 15%);
+
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: block;
+    z-index: 2;
+
+    &::after {
+      content: '';
+      @include stretch;
+      z-index: 1;
+      background-color: rgba(#000, .6);
+      opacity: 0;
+      transition: opacity $transition;
+    }
+  }
+
+  &__info {
+    position: relative;
+    @include flex__row;
+    width: 100%;
+    z-index: 3;
+    padding: 10px 20px;
+    background-color: $background;
+    transition: opacity $transition;
+
+    @include laptop {
+      @include non-touch {
+        position: absolute;
+        opacity: 0;
+        background-color: rgba(#fff, .8);
+      }
+
+      &--focused {
+        opacity: 1;
+      }
+    }
+
+    &--top {
+      @include laptop {
+        @include non-touch {
+          top: 0;
+        }
+      }
+    }
+
+    &--bottom {
+      @include laptop {
+        @include non-touch {
+          bottom: 0;
+        }
+      }
+    }
+  }
+
+  @include non-touch {
+    &__item:hover &__link::after,
+    &__link:focus::after {
+      opacity: 1;
+    }
+
+    &__link:focus {
+      outline: none;
+    }
+
+    @include laptop {
+      &__item:hover &__info {
+        opacity: 1;
+      }
+    }
+  }
+
+  @include touch {
+    &__link:active::after {
+      opacity: 1;
+    }
+  }
+}
+
+.date {
+  font-weight: 700;
+  color: $medium;
+}
+
+.download-btn {
+  margin-right: auto;
+  margin-left: 20px;
+}
