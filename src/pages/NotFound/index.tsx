@@ -1,12 +1,10 @@
 import React from "react";
-import { useAuth } from "init/hooks";
-import Layout from "layout";
 import styles from "./not-found.module.scss";
 
 const NotFound = () => {
   const path = window.location.pathname.replace('/phoiewer/build/', '/');
-  const auth = useAuth();
-  const children = (
+
+  return (
     <div className={styles['not-found']}>
       <div className={styles['not-found__wrapper']}>
         <h2 className={styles.header}>404</h2>
@@ -16,8 +14,6 @@ const NotFound = () => {
       </div>
     </div>
   );
-
-  return auth.isLoggedIn ? <Layout children={children} /> : children;
 };
 
 export default NotFound;
