@@ -13,6 +13,8 @@
 }
 
 .back-bth {
+  position: relative;
+  z-index: 2;
   @include btn__secondary;
   padding: 1px 6px;
   margin-bottom: 20px;
@@ -135,6 +137,7 @@
 .loading {
   &-container {
     @include stretch;
+    z-index: 1;
     @include flex__center;
   }
 
