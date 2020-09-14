@@ -17,6 +17,7 @@ const Header = () => {
 
   return !auth.isLoggedIn ? <Redirect to="/auth" /> : (
     <header className={styles.header}>
+      <h1 className="visually-hidden">Phoiewer</h1>
       <div className={styles['header__wrapper']}>
         <div className={styles.userinfo}>
           {
@@ -30,6 +31,7 @@ const Header = () => {
           href="https://unsplash.com/?utm_source=phoiewer&utm_medium=referral"
           target="_blank"
           rel="noopener noreferrer"
+          title="Перейти на сайт unsplash.com"
         >
           <picture>
             <source srcSet={logoBig} media="(min-width: 769px)" />

@@ -107,18 +107,15 @@ class List extends React.Component<PropsType, {focused: {[n: string]: boolean}}>
                     style={this.state.focused[el.id] ? {opacity: 1} : {}}
                   >
                     <DateString className={styles.date} date={el.created_at} short={true} />
-                    <a
-                      href={`https://unsplash.com/photos/${el.id}/download?force=true`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      download
+                    <Button
+                      type="download"
                       className={styles['download-btn']}
+                      text="Скачать"
+                      id={el.id}
                       onClick={() => downloadEventTrigger(el)}
                       onFocus={() => this.setFocused(el.id, true)}
                       onBlur={() => this.setFocused(el.id, false)}
-                    >
-                      Скачать
-                    </a>
+                    />
                     <Button
                       type="like"
                       isLiked={el.liked_by_user}

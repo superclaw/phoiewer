@@ -13,7 +13,7 @@ const Error = ({ header, message, className = '' }: PropsType) => (
     <h3 className={styles['error__header']}>
       {header}
     </h3>
-    {message}
+    <span>{message}</span>
   </div>
 );
 
