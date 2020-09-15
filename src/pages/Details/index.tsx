@@ -35,6 +35,9 @@ const Details = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles['wrapper__top']}>
+        <h2 className="visually-hidden">
+          Детальная информация о фотографии {photo ? photo.id : ''}
+        </h2>
         {
           isLoading && (
             <div className={styles['loading-container']}>

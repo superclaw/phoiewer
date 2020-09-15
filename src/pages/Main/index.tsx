@@ -23,6 +23,9 @@ const Main = () => {
 
   return query ? <Redirect to={query.replace(/~and~/g, '&') + hash} /> : (
       <div className={styles.main}>
+        <h2 className="visually-hidden">
+          Лента фотографий
+        </h2>
         <List
             list={list}
             page={page}
