@@ -1,8 +1,9 @@
 import { getPhoto, updateLikes } from "init/UnsplashApi";
 import { TAction, TAsyncAction, TData } from "init/types";
+import { Acts } from "./reducer";
 
 export const clearPhoto: TAction = () => ({
-  type: 'CLEAR_DATA',
+  type: Acts.CLEAR_DATA,
 });
 
 export const loadPhoto: TAsyncAction = (id: string) =>
@@ -12,13 +13,13 @@ export const loadPhoto: TAsyncAction = (id: string) =>
 
     if (data.failed) {
       dispatch({
-        type: 'REQUEST_FAILED_DETAILS',
+        type: Acts.REQUEST_FAILED,
         message: data.message,
       });
 
     } else {
       dispatch({
-        type: 'LOAD_PHOTO',
+        type: Acts.LOAD_PHOTO,
         data: data,
       });
     }
@@ -31,13 +32,13 @@ export const likeDetails: TAsyncAction = (id: string, isLiked: boolean) =>
 
     if (data.failed) {
       dispatch({
-        type: 'REQUEST_FAILED_DETAILS',
+        type: Acts.REQUEST_FAILED,
         message: data.message,
       });
 
     } else {
       dispatch({
-        type: 'LIKE_PHOTO_DETAILS',
+        type: Acts.LIKE_PHOTO,
         data: data,
       });
     }

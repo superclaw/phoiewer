@@ -1,6 +1,13 @@
 import { TReducer, TReducerFunc } from "init/types";
 import { TPhoto } from "init/UnsplashApi/types";
 
+export enum Acts {
+  CLEAR_DATA = 'CLEAR_DATA',
+  LOAD_PHOTO = 'LOAD_PHOTO',
+  LIKE_PHOTO = 'LIKE_PHOTO_DETAILS',
+  REQUEST_FAILED = 'REQUEST_FAILED_DETAILS',
+}
+
 export type TDetailsState = {
   photo?: TPhoto;
   requestFailed: {
@@ -54,10 +61,10 @@ const setErrorMessage: TReducerFunc<TDetailsState> = (state, message) => ({
 
 const reducer: TReducer<TDetailsState> = (state = initState, action) => {
   switch (action.type) {
-    case 'CLEAR_DATA': return clearData(state);
-    case 'LOAD_PHOTO': return updatePhoto(state, action.data);
-    case 'LIKE_PHOTO_DETAILS': return updateLikes(state, action.data);
-    case 'REQUEST_FAILED_DETAILS': return setErrorMessage(state, action.message);
+    case Acts.CLEAR_DATA: return clearData(state);
+    case Acts.LOAD_PHOTO: return updatePhoto(state, action.data);
+    case Acts.LIKE_PHOTO: return updateLikes(state, action.data);
+    case Acts.REQUEST_FAILED: return setErrorMessage(state, action.message);
     default: return state;
   }
 };

@@ -1,13 +1,14 @@
 import Cookies from "js-cookie";
 import { authUser, getUser } from "init/UnsplashApi";
 import { TAction, TAsyncAction, TData } from "init/types";
+import { Acts } from "./reducer";
 
 export const logIn: TAsyncAction = (code: string) => async function(dispatch) {
   const data: TData = await authUser(code);
 
   if (data.failed) {
     dispatch({
-      type: 'REQUEST_FAILED_AUTH',
+      type: Acts.REQUEST_FAILED,
       message: data.message,
     });
 
@@ -28,18 +29,18 @@ export const loadUser: TAsyncAction = () => async function(dispatch) {
 
   if (data.failed) {
     dispatch({
-      type: 'REQUEST_FAILED_AUTH',
+      type: Acts.REQUEST_FAILED,
       message: data.message,
     });
 
   } else {
     dispatch({
-      type: 'SET_USER',
+      type: Acts.SET_USER,
       user: data,
     });
   }
 };
 
 export const updateAuth: TAction = () => ({
-  type: 'UPDATE_AUTH',
+  type: Acts.UPDATE_AUTH,
 });

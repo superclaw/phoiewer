@@ -2,6 +2,12 @@ import Cookies from "js-cookie";
 import { TReducer, TReducerFunc } from "init/types";
 import { TUser } from "init/UnsplashApi/types";
 
+export enum Acts {
+  UPDATE_AUTH = 'UPDATE_AUTH',
+  SET_USER = 'SET_USER',
+  REQUEST_FAILED = 'REQUEST_FAILED_AUTH',
+}
+
 export type TAuthState = {
   isLoggedIn: boolean;
   user?: TUser;
@@ -43,9 +49,9 @@ const setErrorMessage: TReducerFunc<TAuthState> = (state, { message }) => ({
 
 const reducer: TReducer<TAuthState> = (state = initState, action) => {
   switch (action.type) {
-    case 'UPDATE_AUTH': return updateAuth(state);
-    case 'SET_USER': return setUser(state, action);
-    case 'REQUEST_FAILED_AUTH': return setErrorMessage(state, action);
+    case Acts.UPDATE_AUTH: return updateAuth(state);
+    case Acts.SET_USER: return setUser(state, action);
+    case Acts.REQUEST_FAILED: return setErrorMessage(state, action);
     default: return state;
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "phoiewer",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Image viewer client for Unsplash (https://unsplash.com)",
   "repository": "github:superclaw/phoiewer",
   "author": {

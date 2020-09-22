@@ -1,6 +1,14 @@
 import { TReducer, TReducerFunc } from "init/types";
 import { TPhotosList } from "init/UnsplashApi/types";
 
+export enum Acts {
+  LIKE_PHOTO = 'LIKE_PHOTO_LIST',
+  LOAD_NEXT = 'LOAD_NEXT',
+  IS_LOADING = 'IS_LOADING',
+  LOADING_DONE = 'LOADING_DONE',
+  REQUEST_FAILED = 'REQUEST_FAILED_LIST',
+}
+
 export type TPhotoListState = {
   list: TPhotosList;
   page: number;
@@ -85,11 +93,11 @@ const unsetIsLoading: TReducerFunc<TPhotoListState> = state => {
 
 const reducer: TReducer<TPhotoListState> = (state = initState, action) => {
   switch (action.type) {
-    case 'LIKE_PHOTO_LIST': return updateLikes(state, action.data, action.id);
-    case 'LOAD_NEXT': return loadList(state, action.data);
-    case 'IS_LOADING': return setIsLoading(state);
-    case 'LOADING_DONE': return unsetIsLoading(state);
-    case 'REQUEST_FAILED_LIST': return setErrorMessage(state, action.message);
+    case Acts.LIKE_PHOTO: return updateLikes(state, action.data, action.id);
+    case Acts.LOAD_NEXT: return loadList(state, action.data);
+    case Acts.IS_LOADING: return setIsLoading(state);
+    case Acts.LOADING_DONE: return unsetIsLoading(state);
+    case Acts.REQUEST_FAILED: return setErrorMessage(state, action.message);
     default: return state;
   }
 };
